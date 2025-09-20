@@ -1,0 +1,29 @@
+.title {
+    text-align: center;
+    background: linear-gradient(to right, red,blue);
+}
+
+.Pclock {
+    text-align: center;
+    background-color: orange;
+}
+
+.taskbar {
+    text-align: left;
+    width: 20%;
+    background: linear-gradient(to bottom, rgb(0, 217, 255), blue  );
+    margin-left: auto;
+}
+
+.notes{
+    text-align: center;
+
+}
+
+.calender {
+    width: 80% ;
+    text-align: left;
+    background-color: red;
+    margin-left: right;
+}
+
