@@ -2,6 +2,9 @@ let startBtn = document.getElementById('start');
 let stopBtn = document.getElementById('stop');
 let resetBtn = document.getElementById('reset');
 
+let shortBreak = document.getElementById('sbreak');
+let longBreak = document.getElementById('lbreak');
+
 let hour = 0;
 let min = 25; // starting time (25:00 for example)
 let sec = 0;
@@ -18,6 +21,22 @@ startBtn.addEventListener('click', function () {
 stopBtn.addEventListener('click', function () {
     timer = false;
 });
+
+longBreak.addEventListener('click', function(){
+    if (timer == false){
+        timer = true;
+        min = 15;
+        countdown();
+    }
+});
+
+shortBreak.addEventListener('click', function(){
+    if (timer == false){timer = true;
+    min = 15;
+    countdown();
+    }
+});
+
 
 resetBtn.addEventListener('click', function () {
     timer = false;
