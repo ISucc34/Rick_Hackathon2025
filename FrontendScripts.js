@@ -82,6 +82,7 @@ class Calendar {
     init() {
         this.render();
         this.addEventListeners();
+        this.updateSelectedDateInfo();
     }
 
     addEventListeners() {
@@ -134,7 +135,9 @@ class Calendar {
         const currentDate = new Date(startDate);
 
         while (currentDate <= endDate) {
-            const dateElement = this.createDateElement(currentDate, month, today);
+            // Create a new Date object for each iteration to avoid reference issues
+            const dateForElement = new Date(currentDate);
+            const dateElement = this.createDateElement(dateForElement, month, today);
             datesContainer.appendChild(dateElement);
             currentDate.setDate(currentDate.getDate() + 1);
         }
@@ -144,6 +147,11 @@ class Calendar {
         const dateElement = document.createElement('div');
         dateElement.className = 'calendar-date';
         dateElement.textContent = date.getDate();
+
+        // Store the date data for easier access
+        dateElement.dataset.date = this.formatDateKey(date);
+        dateElement.dataset.month = date.getMonth();
+        dateElement.dataset.currentMonth = currentMonth;
 
         // Add classes for styling
         if (date.getMonth() !== currentMonth) {
@@ -165,11 +173,30 @@ class Calendar {
             dateElement.title = this.events[dateKey].join(', ');
         }
 
-        // Add click event
-        dateElement.addEventListener('click', () => {
-            if (date.getMonth() === currentMonth) {
-                this.selectDate(date);
-            }
+        // Add click event with improved handling
+        dateElement.addEventListener('click', ((clickedDate) => {
+            return (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                console.log('Date clicked:', clickedDate.toDateString(), 'Currently selected:', this.selectedDate ? this.selectedDate.toDateString() : 'none');
+                
+                // Toggle selection: if clicking the same date, deselect it
+                if (this.selectedDate && this.isSameDay(clickedDate, this.selectedDate)) {
+                    this.deselectDate();
+                } else {
+                    this.selectDate(new Date(clickedDate));
+                }
+            };
+        })(new Date(date)));
+
+        // Add visual feedback on mousedown
+        dateElement.addEventListener('mousedown', () => {
+            dateElement.style.transform = 'scale(0.95)';
+        });
+
+        dateElement.addEventListener('mouseup', () => {
+            dateElement.style.transform = '';
         });
 
         return dateElement;
@@ -183,26 +210,40 @@ class Calendar {
         console.log('Selected date:', this.formatDateKey(date));
     }
 
+    deselectDate() {
+        this.selectedDate = null;
+        this.render();
+        this.updateSelectedDateInfo();
+        
+        console.log('Date deselected');
+    }
+
     updateSelectedDateInfo() {
         const infoDiv = document.getElementById('selectedDateInfo');
         if (this.selectedDate) {
-            const dateStr = this.selectedDate.toLocaleDateString();
+            const dateStr = this.selectedDate.toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric'
+            });
             const dateKey = this.formatDateKey(this.selectedDate);
             const events = this.events[dateKey] || [];
             
-            let html = `<strong>Selected: ${dateStr}</strong><br>`;
+            let html = `<strong>📅 Selected: ${dateStr}</strong><br>`;
             if (events.length > 0) {
-                html += `<strong>Events:</strong><br>`;
+                html += `<strong>📋 Events (${events.length}):</strong><br>`;
                 events.forEach((event, index) => {
-                    html += `• ${event} <button onclick="calendar.removeEvent(calendar.selectedDate, '${event}')" style="margin-left: 10px; font-size: 12px;">Remove</button><br>`;
+                    html += `• ${event} <button onclick="calendar.removeEvent(calendar.selectedDate, '${event}')" style="margin-left: 10px; font-size: 12px; padding: 2px 6px; background: #ff4757; color: white; border: none; border-radius: 3px; cursor: pointer;">❌</button><br>`;
                 });
             } else {
-                html += '<em>No events for this date</em>';
+                html += '<em>📝 No events for this date. Add one above!</em>';
             }
+            html += '<br><small style="color: #666;">💡 Click the same date again to deselect it</small>';
             
             infoDiv.innerHTML = html;
         } else {
-            infoDiv.innerHTML = 'Click on a date to select it';
+            infoDiv.innerHTML = '👆 <strong>No date selected</strong><br>Click on any date to select it and add events<br><small style="color: #666;">💡 Click the same date twice to deselect it</small>';
         }
     }
 
@@ -250,7 +291,12 @@ document.addEventListener('DOMContentLoaded', function() {
             calendar.addEvent(calendar.selectedDate, eventText);
             document.getElementById('eventText').value = '';
         } else if (!calendar.selectedDate) {
-            alert('Please select a date first');
+            // If no date selected, offer to select today's date
+            if (confirm('No date selected. Would you like to add this event to today?')) {
+                calendar.selectDate(new Date());
+                calendar.addEvent(calendar.selectedDate, eventText);
+                document.getElementById('eventText').value = '';
+            }
         } else {
             alert('Please enter an event description');
         }

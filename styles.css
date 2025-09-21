@@ -67,7 +67,7 @@ body{
 .taskbar {
     text-align: left;
     width: 20%;
-    background: linear-gradient(to bottom, rgb(130, 216, 231), rgb(49, 49, 75)  );
+    background: linear-gradient(to bottom, rgb(130, 216, 231), rgb(104, 104, 180)  );
     margin-left: auto;
 }
 
@@ -168,24 +168,36 @@ body{
     justify-content: center;
     position: relative;
     font-weight: 500;
+    user-select: none;
+    pointer-events: auto;
+    border: 2px solid transparent;
 }
 
 .calendar-date:hover {
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
     transform: scale(1.05);
+    border-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.calendar-date:active {
+    transform: scale(0.95);
 }
 
 .calendar-date.today {
     background: linear-gradient(135deg, #ff6b6b, #ffa726);
     color: white;
     font-weight: bold;
+    border-color: #fff;
 }
 
 .calendar-date.selected {
     background: linear-gradient(135deg, #4caf50, #8bc34a);
     color: white;
     font-weight: bold;
+    border-color: #fff;
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
 }
 
 .calendar-date.other-month {
@@ -194,9 +206,9 @@ body{
 }
 
 .calendar-date.other-month:hover {
-    background: #f0f0f0;
-    color: #999;
-    transform: none;
+    background: linear-gradient(135deg, #bbb, #999);
+    color: white;
+    transform: scale(1.02);
 }
 
 .calendar-date.has-event::after {
