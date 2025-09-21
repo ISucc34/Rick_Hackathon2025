@@ -10,8 +10,10 @@ let count = 0;
 let timer = false;
 
 startBtn.addEventListener('click', function(){
+    if(timer==false){
     timer = true;
     stopwatch();
+    }
 });
 
 stopBtn.addEventListener('click', function(){

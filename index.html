@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,9 +16,14 @@
   <div class="Pclock">
     <h1>Pomodoro Clock</h1>
     <div class="time">
-      <span class="digit" id="hr">00</span><span class="txt">Hr</span>
-      <span class="digit" id="min">00</span><span class="txt">Min</span>
-      <span class="digit" id="sec">00</span><span class="txt">Sec</span>
+      <span class="digit" id="hr">00</span>
+      <span class="txt">Hr</span>
+
+      <span class="digit" id="min">00</span>
+      <span class="txt">Min</span>
+
+      <span class="digit" id="sec">00</span>
+      <span class="txt">Sec</span>
     </div>
     <div id="buttons">
       <button class="btn" id="start">Start</button>
@@ -27,9 +32,13 @@
     </div>
   </div>
   
+  <div>
+  <h2 class="calendar">Calendar</h2>
   <!-- Tasks -->
-  <div class="taskbar">
+    <div class="taskbar">
+    
     <h3>Tasks</h3>
+    
     <section class="notes">
       <form id="taskForm">
         <input type="text" id="taskTitle" placeholder="Add Notes">
@@ -37,9 +46,9 @@
       </form>
       <ul id="taskList"></ul> <!-- Tasks will appear here -->
     </section>
+    </div>
   </div>
-
-  <h2 class="calendar">Calendar</h2>
+  
 
   <script>
     const backendUrl = "http://localhost:8080"; // adjust if needed
