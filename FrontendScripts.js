@@ -38,6 +38,17 @@ shortBreak.addEventListener('click', function(){
 });
 
 
+pbutton.addEventListener('click', function () {
+    timer = false;
+    hour = 0;
+    min = 25; // reset to 25:00
+    sec = 0;
+
+    document.getElementById('hr').innerHTML = "00";
+    document.getElementById('min').innerHTML = "25";
+    document.getElementById('sec').innerHTML = "00";
+});
+
 resetBtn.addEventListener('click', function () {
     timer = false;
     hour = 0;

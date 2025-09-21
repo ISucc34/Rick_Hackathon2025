@@ -295,7 +295,7 @@ body{
 
 .breakbuttons {
     text-align: center;
-    color: red;
+    
     flex-direction: column;
     justify-content: center;
     align-items: center;
