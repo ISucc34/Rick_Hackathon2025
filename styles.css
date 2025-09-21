@@ -2,7 +2,7 @@ body{
     padding: 0;
     margin: 0;
     min-height: 100vh;
-    background: linear-gradient(135deg, rgb(245, 162, 10),rgb(249, 170, 183));
+    background: linear-gradient(135deg, rgb(10, 218, 245),rgb(0, 0, 0));
     font-family: 'Arial', sans-serif;
 }
 
@@ -33,9 +33,12 @@ body{
 
 #buttons{
     margin-top: 50px;
+    background-color: rgb(28, 28, 28);
+    
 }
 
 .btn{
+    background-color: rgb(2, 255, 255);
     width: 100px;
     padding: 10px 15px;
     margin: 0px 20px;
@@ -63,12 +66,21 @@ body{
     background: radial-gradient(rgb(255, 253, 253),rgb(49, 49, 52));
 }
 
+#sbreak{
+    background: radial-gradient(rgb(255, 253, 253),rgb(49, 49, 52));
+}
+
+#lbreak{
+    background: radial-gradient(rgb(255, 253, 253),rgb(49, 49, 52));
+}
 /*Task stuff*/
 .taskbar {
-    text-align: left;
+    text-align: center;
     width: 20%;
     background: linear-gradient(to bottom, rgb(130, 216, 231), rgb(104, 104, 180)  );
     margin-left: auto;
+    overflow-y: auto;
+    height: 400px;
 }
 
 .notes{
@@ -85,11 +97,11 @@ body{
 /* Calendar Styles */
 .calendar-container {
     width: 70%;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(36, 45, 43, 0.9);
     border-radius: 15px;
     padding: 20px;
     margin: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(255, 48, 48, 0.1);
     backdrop-filter: blur(10px);
 }
 
@@ -99,17 +111,18 @@ body{
     align-items: center;
     margin-bottom: 20px;
     padding: 0 10px;
+    
 }
 
 .calendar-header h2 {
     margin: 0;
     font-size: 24px;
-    color: #333;
+    color: #7cc3e9;
     font-weight: 600;
 }
 
 .nav-btn {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #66c2ea, #4b68a2);
     color: white;
     border: none;
     border-radius: 50%;
@@ -139,8 +152,8 @@ body{
 }
 
 .day-header {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
+    background: linear-gradient(135deg, #66ddea, #4b68a2);
+    color: rgb(255, 255, 255);
     padding: 12px;
     text-align: center;
     font-weight: 600;
@@ -151,7 +164,7 @@ body{
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 1px;
-    background: #e0e0e0;
+    background: #47d2d4;
     border-radius: 0 0 8px 8px;
     overflow: hidden;
 }
@@ -174,8 +187,8 @@ body{
 }
 
 .calendar-date:hover {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
+    background: linear-gradient(135deg, #66ea87, #4b8ea2);
+    color: rgb(255, 255, 255);
     transform: scale(1.05);
     border-color: #fff;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
@@ -186,7 +199,7 @@ body{
 }
 
 .calendar-date.today {
-    background: linear-gradient(135deg, #ff6b6b, #ffa726);
+    background: linear-gradient(135deg, #6bffb3, #2684ff);
     color: white;
     font-weight: bold;
     border-color: #fff;
@@ -194,14 +207,14 @@ body{
 
 .calendar-date.selected {
     background: linear-gradient(135deg, #4caf50, #8bc34a);
-    color: white;
+    color: rgb(48, 164, 141);
     font-weight: bold;
     border-color: #fff;
     box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
 }
 
 .calendar-date.other-month {
-    color: #ccc;
+    color: #cccccc;
     background: #f9f9f9;
 }
 
@@ -219,7 +232,7 @@ body{
     transform: translateX(-50%);
     width: 6px;
     height: 6px;
-    background: #ff4757;
+    background: #121212;
     border-radius: 50%;
 }
 
@@ -269,4 +282,13 @@ body{
     display: flex;
     gap: 20px;
     padding: 20px;
+}
+
+.breakbuttons {
+    text-align: center;
+    color: red;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
 }
