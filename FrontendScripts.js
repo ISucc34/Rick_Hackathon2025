@@ -32,7 +32,7 @@ longBreak.addEventListener('click', function(){
 
 shortBreak.addEventListener('click', function(){
     if (timer == false){timer = true;
-    min = 15;
+    min = 5;
     countdown();
     }
 });
