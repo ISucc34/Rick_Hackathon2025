@@ -38,7 +38,6 @@ body{
 }
 
 .btn{
-    background-color: rgb(2, 255, 255);
     width: 100px;
     padding: 10px 15px;
     margin: 0px 20px;
@@ -68,10 +67,20 @@ body{
 
 #sbreak{
     background: radial-gradient(rgb(255, 253, 253),rgb(49, 49, 52));
+    height : 90px;
+    width : 120px;
 }
 
 #lbreak{
     background: radial-gradient(rgb(255, 253, 253),rgb(49, 49, 52));
+    height : 90px;
+    width : 120px;
+}
+
+#pbutton{
+    background: radial-gradient(rgb(255, 253, 253),rgb(49, 49, 52));
+    height : 90px;
+    width : 120px;
 }
 /*Task stuff*/
 .taskbar {
