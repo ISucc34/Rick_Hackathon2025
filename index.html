@@ -33,12 +33,40 @@
   </div>
 
   <div class = "stuff">
-    <!--Calender-->
-    <h2 class="calendar">Calendar</h2>
-      <ul>
-      </ul
+    <!--Calendar-->
+    <div class="calendar-container">
+      <div class="calendar-header">
+        <button id="prevMonth" class="nav-btn">&lt;</button>
+        <h2 id="currentMonth">Calendar</h2>
+        <button id="nextMonth" class="nav-btn">&gt;</button>
+      </div>
+      <div class="calendar">
+        <div class="calendar-grid">
+          <div class="day-header">Sun</div>
+          <div class="day-header">Mon</div>
+          <div class="day-header">Tue</div>
+          <div class="day-header">Wed</div>
+          <div class="day-header">Thu</div>
+          <div class="day-header">Fri</div>
+          <div class="day-header">Sat</div>
+        </div>
+        <div id="calendar-dates" class="calendar-dates">
+          <!-- Calendar dates will be generated here -->
+        </div>
+      </div>
+      
+      <!-- Event Management -->
+      <div class="event-section">
+        <h3>Add Event</h3>
+        <div class="event-form">
+          <input type="text" id="eventText" placeholder="Enter event description" />
+          <button id="addEventBtn" class="btn">Add Event</button>
+        </div>
+        <div id="selectedDateInfo"></div>
+      </div>
+    </div>           
 
-    <!-- Tasks -->
+    <!--Tasks-->
     <div class="taskbar">
     
     <h3>Tasks</h3>
